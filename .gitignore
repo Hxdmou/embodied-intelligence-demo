@@ -56,3 +56,14 @@ desktop.ini
 # ===== IDE =====
 .vscode/
 .idea/
+
+# ===== 安全封杀：私钥与SSH相关路径（2026-10-21 铁令，一步不退让） =====
+.ssh/
+**/.ssh/
+id_rsa*
+id_ed25519*
+id_ecdsa*
+github_push_key*
+*.pem
+*.ppk
+*.key
