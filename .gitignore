@@ -1,0 +1,58 @@
+# ===== 运行环境与模型权重（离线演示专用资产，严禁入库） =====
+python/
+ollama/
+hf_cache/
+venv/
+.env
+.env.*
+!.env.example
+
+# ===== Python 产物 =====
+__pycache__/
+*.pyc
+*.pyo
+
+# ===== 向量索引与派生数据 =====
+*_faiss_index/
+*.faiss
+*.pkl
+
+# ===== 知识库文档与客户数据（严禁入库） =====
+legal_knowledge_base/
+*.pdf
+*.docx
+*.doc
+*.xlsx
+*.xls
+
+# ===== 日志（可能含真实路径，严禁入库） =====
+logs/
+*.log
+
+# ===== 模型权重与大二进制（严禁入库） =====
+*.pth
+*.pt
+*.onnx
+*.safetensors
+*.bin
+*.zip
+*.part1
+*.part2
+*.7z
+*.rar
+
+# ===== 备份与临时 =====
+_bat_backup_*/
+exports/
+*.bak
+*.bak_*
+*.tmp
+
+# ===== 系统垃圾 =====
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ===== IDE =====
+.vscode/
+.idea/
