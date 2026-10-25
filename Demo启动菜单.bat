@@ -1,9 +1,9 @@
 @echo off
 setlocal
-title 具身智能演示菜单（便携版）
+title ����������ʾ�˵�����Я�棩
 pushd "%~dp0"
 
-rem ===== 所有路径基于本bat所在目录，U盘换盘符也能跑 =====
+rem ===== ����·�����ڱ�bat����Ŀ¼��U�̻��̷�Ҳ���� =====
 set "ROOT=%~dp0"
 set "ROOT=%ROOT:~0,-1%"
 set "PYEXE=%ROOT%\python\python.exe"
@@ -14,22 +14,22 @@ set "PYTHONIOENCODING=utf-8"
 cls
 echo.
 echo ==============================================================
-echo           具身智能演示菜单 v1.1（便携版）
+echo           ����������ʾ�˵� v1.1����Я�棩
 echo ==============================================================
 echo.
-echo   [1] 机械臂智能控制演示（含本地大模型）
-echo   [2] RAG 十套知识问答系统（浏览器）
-echo   [3] PyBullet 机械臂仿真
-echo   [4] PPO 训练智能体演示（500万步）
-echo   [5] 部署健康检查演示
-echo   [6] 三层编排+AI决策+数字孪生综合演示
-echo   [7] PyBullet Panda 仿真演示（框架版）
-echo   [8] 断网演示自检（演示前建议先运行）
-echo   [0] 退出
+echo   [1] ��е�����ܿ�����ʾ�������ش�ģ�ͣ�
+echo   [2] RAG ʮ��֪ʶ�ʴ�ϵͳ���������
+echo   [3] PyBullet ��е�۷���
+echo   [4] PPO ѵ����������ʾ��500�򲽣�
+echo   [5] ���𽡿������ʾ
+echo   [6] �������+AI����+���������ۺ���ʾ
+echo   [7] PyBullet Panda ������ʾ����ܰ棩
+echo   [8] ������ʾ�Լ죨��ʾǰ���������У�
+echo   [0] �˳�
 echo.
 echo ==============================================================
 echo.
-set /p choice=请输入选项编号:
+set /p choice=������ѡ����:
 
 if "%choice%"=="1" goto robot
 if "%choice%"=="2" goto rag
@@ -47,15 +47,15 @@ call "%ROOT%\start_demo.bat"
 goto menu
 
 :rag
-call "%ROOT%\一键启动RAG系统.bat"
+call "%ROOT%\һ������RAGϵͳ.bat"
 goto menu
 
 :pbsim
-call "%ROOT%\启动PyBullet仿真.bat"
+call "%ROOT%\����PyBullet����.bat"
 goto menu
 
 :ppo
-call "%ROOT%\启动训练好的智能体.bat"
+call "%ROOT%\����ѵ���õ�������.bat"
 goto menu
 
 :health
@@ -77,7 +77,7 @@ pause
 goto menu
 
 :selfcheck
-call "%ROOT%\断网演示自检.bat"
+call "%ROOT%\������ʾ�Լ�.bat"
 goto menu
 
 :end

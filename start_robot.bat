@@ -1,9 +1,9 @@
 @echo off
 setlocal
-title æœºå™¨äººä»¿çœŸ + æ§åˆ¶ GUIï¼ˆä¾¿æºç‰ˆï¼‰
+title »úÆ÷ÈË·ÂÕæ + ¿ØÖÆ GUI£¨±ãĞ¯°æ£©
 pushd "%~dp0"
 
-rem ===== æ‰€æœ‰è·¯å¾„åŸºäºæœ¬batæ‰€åœ¨ç›®å½•ï¼ŒUç›˜æ¢ç›˜ç¬¦ä¹Ÿèƒ½è·‘ =====
+rem ===== ËùÓĞÂ·¾¶»ùÓÚ±¾batËùÔÚÄ¿Â¼£¬UÅÌ»»ÅÌ·ûÒ²ÄÜÅÜ =====
 set "ROOT=%~dp0"
 set "ROOT=%ROOT:~0,-1%"
 set "PYEXE=%ROOT%\python\python.exe"
@@ -14,5 +14,5 @@ cd /d "%ROOT%\embodied-intelligence"
 start "" "%PYEXE%" robot_sim.py
 start "" "%PYEXE%" robot_control_gui.py
 
-echo æœºå™¨äººä»¿çœŸä¸æ§åˆ¶ GUI å·²å¯åŠ¨ï¼
+echo »úÆ÷ÈË·ÂÕæÓë¿ØÖÆ GUI ÒÑÆô¶¯£¡
 pause

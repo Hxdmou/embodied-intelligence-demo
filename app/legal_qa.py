@@ -452,7 +452,7 @@ def interactive():
                         for root, _, files in os.walk(local_path):
                             for file in files:
                                 ext = os.path.splitext(file)[1].lower()[1:]
-                                if ext in Config.SUPPORTED_FILE_TYPES:
+                                if ext in Config.SUPPORTED_FILE_TYPES or ext == '':
                                     file_paths.append(os.path.join(root, file))
                         success, msg = process_files(file_paths) if file_paths else (False, "文件夹中没有支持的文件")
                     else:

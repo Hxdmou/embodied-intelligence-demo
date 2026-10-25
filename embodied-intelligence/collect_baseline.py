@@ -3,9 +3,9 @@ PyBullet 仿真基线数据采集脚本
 功能：采集当前仿真环境下的姿态数据（包括与直立姿态的偏差），
       用于判断姿态倒立的量化程度和控制稳定性。
 使用方法：
-  1. 将本文件及同目录下的 config.py、logger.py 保存在项目 embodied-intelligence/ 目录（相对路径）
+  1. 将本文件及同目录下的 config.py、logger.py 保存在 F:/具身智能/
   2. 在终端运行：python collect_baseline.py
-  3. 查看同目录下的 baseline_report.txt 和 baseline_log.csv
+  3. 查看 F:/具身智能/ 下的 baseline_report.txt 和 baseline_log.csv
 """
 # ============================================================================
 # 免责声明与AI使用规范

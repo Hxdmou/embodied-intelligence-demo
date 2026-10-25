@@ -1,9 +1,9 @@
 @echo off
 setlocal
-title PyBullet 机械臂仿真（便携版）
+title PyBullet ��е�۷��棨��Я�棩
 pushd "%~dp0"
 
-rem ===== 所有路径基于本bat所在目录，U盘换盘符也能跑 =====
+rem ===== ����·�����ڱ�bat����Ŀ¼��U�̻��̷�Ҳ���� =====
 set "ROOT=%~dp0"
 set "ROOT=%ROOT:~0,-1%"
 set "PYEXE=%ROOT%\python\python.exe"
@@ -11,21 +11,21 @@ set "PYTHONNOUSERSITE=1"
 set "PYTHONIOENCODING=utf-8"
 
 echo ==============================================================
-echo           PyBullet 机械臂仿真（便携版）
+echo           PyBullet ��е�۷��棨��Я�棩
 echo ==============================================================
 echo.
-echo 正在启动 PyBullet 3D 窗口...
+echo �������� PyBullet 3D ����...
 echo.
-echo 操作:
-echo   鼠标左键拖动  - 旋转视角
-echo   鼠标右键拖动  - 平移视角
-echo   鼠标滚轮      - 缩放
-echo   关闭窗口      - 退出
+echo ����:
+echo   �������϶�  - ��ת�ӽ�
+echo   ����Ҽ��϶�  - ƽ���ӽ�
+echo   ������      - ����
+echo   �رմ���      - �˳�
 echo.
 
 cd /d "%ROOT%\embodied-intelligence"
 "%PYEXE%" pybullet_simulation.py
 
 echo.
-echo 仿真已退出。
+echo �������˳���
 pause

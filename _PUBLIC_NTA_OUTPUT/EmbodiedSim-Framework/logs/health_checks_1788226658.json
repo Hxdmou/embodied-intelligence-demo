@@ -1,0 +1,470 @@
+{
+  "test": {
+    "deploy_level": "test",
+    "overall_pass": true,
+    "counts": {
+      "OK": 11,
+      "WARN": 0,
+      "FAIL": 0,
+      "SKIP": 2
+    },
+    "generated_at": 1788226657.099349,
+    "results": [
+      {
+        "check_id": "SYS_OS",
+        "name": "操作系统(Windows)",
+        "category": "system_environment",
+        "level": "OK",
+        "message": "Windows 11 符合部署要求",
+        "duration_ms": 19,
+        "details": {
+          "system": "Windows",
+          "release": "11",
+          "arch": "AMD64"
+        }
+      },
+      {
+        "check_id": "SYS_PYTHON",
+        "name": "Python版本",
+        "category": "system_environment",
+        "level": "OK",
+        "message": "Python 3.12.8（≥3.10 满足推荐版本）",
+        "duration_ms": 0,
+        "details": {
+          "version": "3.12.8"
+        }
+      },
+      {
+        "check_id": "SYS_MEMORY",
+        "name": "系统内存",
+        "category": "system_environment",
+        "level": "OK",
+        "message": "总内存 63.3GB / 可用 36.1GB （最低要求 ≥4.0GB）",
+        "duration_ms": 0,
+        "details": {
+          "total_gb": 63.27,
+          "available_gb": 36.08
+        }
+      },
+      {
+        "check_id": "SYS_DISK",
+        "name": "磁盘可用空间",
+        "category": "system_environment",
+        "level": "OK",
+        "message": "剩余 399.5GB / 总 476.9GB（≥5.0GB）",
+        "duration_ms": 0,
+        "details": {
+          "free_gb": 399.55,
+          "total_gb": 476.94
+        }
+      },
+      {
+        "check_id": "CFG_ENV_EXAMPLE",
+        "name": "环境变量模板文件",
+        "category": "configuration",
+        "level": "OK",
+        "message": "存在",
+        "duration_ms": 0,
+        "details": {
+          "path": "F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework\\.env.example"
+        }
+      },
+      {
+        "check_id": "CFG_REQUIREMENTS",
+        "name": "依赖清单文件",
+        "category": "configuration",
+        "level": "OK",
+        "message": "存在",
+        "duration_ms": 0,
+        "details": {
+          "path": "F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework\\requirements.txt"
+        }
+      },
+      {
+        "check_id": "SAFE_ESTOP",
+        "name": "紧急停止功能",
+        "category": "safety_protection",
+        "level": "OK",
+        "message": "已启用（框架级别：接入硬件时将对接真实IO）",
+        "duration_ms": 0,
+        "details": {
+          "emergency_stop_enabled": true
+        }
+      },
+      {
+        "check_id": "SAFE_LOG_DIR",
+        "name": "日志目录可写性",
+        "category": "safety_protection",
+        "level": "OK",
+        "message": "可写（目录：F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework\\logs）",
+        "duration_ms": 3,
+        "details": {
+          "dir": "F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework\\logs"
+        }
+      },
+      {
+        "check_id": "NET_BASIC",
+        "name": "基础网络连通性",
+        "category": "communication",
+        "level": "OK",
+        "message": "基础网络连通（DNS示例：8.8.8.8:53）",
+        "duration_ms": 49,
+        "details": {}
+      },
+      {
+        "check_id": "AI_LLM_KEY",
+        "name": "大模型API Key配置",
+        "category": "ai_models",
+        "level": "SKIP",
+        "message": "未检测到 .env 文件（可选功能：需要启用AI决策时配置）",
+        "duration_ms": 0,
+        "details": {}
+      },
+      {
+        "check_id": "DATA_ROOT_RD",
+        "name": "项目根目录可读",
+        "category": "data_files",
+        "level": "OK",
+        "message": "可读: F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework",
+        "duration_ms": 0,
+        "details": {
+          "project_root": "F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework"
+        }
+      },
+      {
+        "check_id": "PERF_CPU",
+        "name": "CPU使用率",
+        "category": "performance",
+        "level": "OK",
+        "message": "当前 5.5%（阈值 <85.0%）",
+        "duration_ms": 203,
+        "details": {
+          "cpu_percent": 5.5
+        }
+      },
+      {
+        "check_id": "HW_ROBOT",
+        "name": "真机硬件对接检查",
+        "category": "robot_hardware",
+        "level": "SKIP",
+        "message": "公共示例版本默认跳过真机对接（接入真机后可在此启用：关节回零/末端示教/急停IO）",
+        "duration_ms": 0,
+        "details": {
+          "deploy_level": "test"
+        }
+      }
+    ]
+  },
+  "pre": {
+    "deploy_level": "pre",
+    "overall_pass": true,
+    "counts": {
+      "OK": 11,
+      "WARN": 0,
+      "FAIL": 0,
+      "SKIP": 2
+    },
+    "generated_at": 1788226657.5543883,
+    "results": [
+      {
+        "check_id": "SYS_OS",
+        "name": "操作系统(Windows)",
+        "category": "system_environment",
+        "level": "OK",
+        "message": "Windows 11 符合部署要求",
+        "duration_ms": 0,
+        "details": {
+          "system": "Windows",
+          "release": "11",
+          "arch": "AMD64"
+        }
+      },
+      {
+        "check_id": "SYS_PYTHON",
+        "name": "Python版本",
+        "category": "system_environment",
+        "level": "OK",
+        "message": "Python 3.12.8（≥3.10 满足推荐版本）",
+        "duration_ms": 0,
+        "details": {
+          "version": "3.12.8"
+        }
+      },
+      {
+        "check_id": "SYS_MEMORY",
+        "name": "系统内存",
+        "category": "system_environment",
+        "level": "OK",
+        "message": "总内存 63.3GB / 可用 36.1GB （最低要求 ≥4.0GB）",
+        "duration_ms": 0,
+        "details": {
+          "total_gb": 63.27,
+          "available_gb": 36.08
+        }
+      },
+      {
+        "check_id": "SYS_DISK",
+        "name": "磁盘可用空间",
+        "category": "system_environment",
+        "level": "OK",
+        "message": "剩余 399.5GB / 总 476.9GB（≥5.0GB）",
+        "duration_ms": 0,
+        "details": {
+          "free_gb": 399.55,
+          "total_gb": 476.94
+        }
+      },
+      {
+        "check_id": "CFG_ENV_EXAMPLE",
+        "name": "环境变量模板文件",
+        "category": "configuration",
+        "level": "OK",
+        "message": "存在",
+        "duration_ms": 0,
+        "details": {
+          "path": "F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework\\.env.example"
+        }
+      },
+      {
+        "check_id": "CFG_REQUIREMENTS",
+        "name": "依赖清单文件",
+        "category": "configuration",
+        "level": "OK",
+        "message": "存在",
+        "duration_ms": 0,
+        "details": {
+          "path": "F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework\\requirements.txt"
+        }
+      },
+      {
+        "check_id": "SAFE_ESTOP",
+        "name": "紧急停止功能",
+        "category": "safety_protection",
+        "level": "OK",
+        "message": "已启用（框架级别：接入硬件时将对接真实IO）",
+        "duration_ms": 0,
+        "details": {
+          "emergency_stop_enabled": true
+        }
+      },
+      {
+        "check_id": "SAFE_LOG_DIR",
+        "name": "日志目录可写性",
+        "category": "safety_protection",
+        "level": "OK",
+        "message": "可写（目录：F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework\\logs）",
+        "duration_ms": 0,
+        "details": {
+          "dir": "F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework\\logs"
+        }
+      },
+      {
+        "check_id": "NET_BASIC",
+        "name": "基础网络连通性",
+        "category": "communication",
+        "level": "OK",
+        "message": "基础网络连通（DNS示例：8.8.8.8:53）",
+        "duration_ms": 53,
+        "details": {}
+      },
+      {
+        "check_id": "AI_LLM_KEY",
+        "name": "大模型API Key配置",
+        "category": "ai_models",
+        "level": "SKIP",
+        "message": "未检测到 .env 文件（可选功能：需要启用AI决策时配置）",
+        "duration_ms": 0,
+        "details": {}
+      },
+      {
+        "check_id": "DATA_ROOT_RD",
+        "name": "项目根目录可读",
+        "category": "data_files",
+        "level": "OK",
+        "message": "可读: F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework",
+        "duration_ms": 0,
+        "details": {
+          "project_root": "F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework"
+        }
+      },
+      {
+        "check_id": "PERF_CPU",
+        "name": "CPU使用率",
+        "category": "performance",
+        "level": "OK",
+        "message": "当前 6.9%（阈值 <85.0%）",
+        "duration_ms": 201,
+        "details": {
+          "cpu_percent": 6.9
+        }
+      },
+      {
+        "check_id": "HW_ROBOT",
+        "name": "真机硬件对接检查",
+        "category": "robot_hardware",
+        "level": "SKIP",
+        "message": "公共示例版本默认跳过真机对接（接入真机后可在此启用：关节回零/末端示教/急停IO）",
+        "duration_ms": 0,
+        "details": {
+          "deploy_level": "pre"
+        }
+      }
+    ]
+  },
+  "prod": {
+    "deploy_level": "prod",
+    "overall_pass": true,
+    "counts": {
+      "OK": 11,
+      "WARN": 0,
+      "FAIL": 0,
+      "SKIP": 2
+    },
+    "generated_at": 1788226658.0045269,
+    "results": [
+      {
+        "check_id": "SYS_OS",
+        "name": "操作系统(Windows)",
+        "category": "system_environment",
+        "level": "OK",
+        "message": "Windows 11 符合部署要求",
+        "duration_ms": 0,
+        "details": {
+          "system": "Windows",
+          "release": "11",
+          "arch": "AMD64"
+        }
+      },
+      {
+        "check_id": "SYS_PYTHON",
+        "name": "Python版本",
+        "category": "system_environment",
+        "level": "OK",
+        "message": "Python 3.12.8（≥3.10 满足推荐版本）",
+        "duration_ms": 0,
+        "details": {
+          "version": "3.12.8"
+        }
+      },
+      {
+        "check_id": "SYS_MEMORY",
+        "name": "系统内存",
+        "category": "system_environment",
+        "level": "OK",
+        "message": "总内存 63.3GB / 可用 36.1GB （最低要求 ≥4.0GB）",
+        "duration_ms": 0,
+        "details": {
+          "total_gb": 63.27,
+          "available_gb": 36.08
+        }
+      },
+      {
+        "check_id": "SYS_DISK",
+        "name": "磁盘可用空间",
+        "category": "system_environment",
+        "level": "OK",
+        "message": "剩余 399.5GB / 总 476.9GB（≥5.0GB）",
+        "duration_ms": 0,
+        "details": {
+          "free_gb": 399.55,
+          "total_gb": 476.94
+        }
+      },
+      {
+        "check_id": "CFG_ENV_EXAMPLE",
+        "name": "环境变量模板文件",
+        "category": "configuration",
+        "level": "OK",
+        "message": "存在",
+        "duration_ms": 0,
+        "details": {
+          "path": "F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework\\.env.example"
+        }
+      },
+      {
+        "check_id": "CFG_REQUIREMENTS",
+        "name": "依赖清单文件",
+        "category": "configuration",
+        "level": "OK",
+        "message": "存在",
+        "duration_ms": 0,
+        "details": {
+          "path": "F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework\\requirements.txt"
+        }
+      },
+      {
+        "check_id": "SAFE_ESTOP",
+        "name": "紧急停止功能",
+        "category": "safety_protection",
+        "level": "OK",
+        "message": "已启用（框架级别：接入硬件时将对接真实IO）",
+        "duration_ms": 0,
+        "details": {
+          "emergency_stop_enabled": true
+        }
+      },
+      {
+        "check_id": "SAFE_LOG_DIR",
+        "name": "日志目录可写性",
+        "category": "safety_protection",
+        "level": "OK",
+        "message": "可写（目录：F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework\\logs）",
+        "duration_ms": 0,
+        "details": {
+          "dir": "F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework\\logs"
+        }
+      },
+      {
+        "check_id": "NET_BASIC",
+        "name": "基础网络连通性",
+        "category": "communication",
+        "level": "OK",
+        "message": "基础网络连通（DNS示例：8.8.8.8:53）",
+        "duration_ms": 46,
+        "details": {}
+      },
+      {
+        "check_id": "AI_LLM_KEY",
+        "name": "大模型API Key配置",
+        "category": "ai_models",
+        "level": "SKIP",
+        "message": "未检测到 .env 文件（可选功能：需要启用AI决策时配置）",
+        "duration_ms": 0,
+        "details": {}
+      },
+      {
+        "check_id": "DATA_ROOT_RD",
+        "name": "项目根目录可读",
+        "category": "data_files",
+        "level": "OK",
+        "message": "可读: F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework",
+        "duration_ms": 0,
+        "details": {
+          "project_root": "F:\\个人作品\\具身智能\\_RAG便携包\\_PUBLIC_NTA_OUTPUT\\EmbodiedSim-Framework"
+        }
+      },
+      {
+        "check_id": "PERF_CPU",
+        "name": "CPU使用率",
+        "category": "performance",
+        "level": "OK",
+        "message": "当前 4.4%（阈值 <85.0%）",
+        "duration_ms": 201,
+        "details": {
+          "cpu_percent": 4.4
+        }
+      },
+      {
+        "check_id": "HW_ROBOT",
+        "name": "真机硬件对接检查",
+        "category": "robot_hardware",
+        "level": "SKIP",
+        "message": "公共示例版本默认跳过真机对接（接入真机后可在此启用：关节回零/末端示教/急停IO）",
+        "duration_ms": 0,
+        "details": {
+          "deploy_level": "prod"
+        }
+      }
+    ]
+  }
+}

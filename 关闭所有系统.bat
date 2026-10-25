@@ -1,13 +1,13 @@
 @echo off
-title Е┘ЁИ≈╜Ф┴─Ф°┴ГЁ╩Г╩÷О╪┬Д╬©Ф░╨Г┴┬О╪┴
+title ╧ь╠укЫспо╣мЁё╗╠Цп╞╟Фё╘
 cls
 
 echo.
 echo ==============================
-echo    Е┘ЁИ≈╜Ф┴─Ф°┴ГЁ╩Г╩÷
+echo    ╧ь╠укЫспо╣мЁ
 echo ==============================
 echo.
-echo Ф╜ёЕ°╗Е│°Ф╜╒Ф┴─Ф°┴ Python / Streamlit / Ollama Х©⌡Г╗▀...
+echo уЩтзмёж╧кЫсп Python / Streamlit / Ollama ╫ЬЁл...
 echo.
 
 "%SystemRoot%\System32\taskkill.exe" /f /im python.exe /t >nul 2>&1
@@ -15,6 +15,6 @@ echo.
 "%SystemRoot%\System32\taskkill.exe" /f /im ollama.exe /t >nul 2>&1
 
 echo.
-echo Ф┴─Ф°┴ГЁ╩Г╩÷Е╥╡Е│°Ф╜╒О╪│
+echo кЫспо╣мЁрямёж╧ё║
 echo.
 pause

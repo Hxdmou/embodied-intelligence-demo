@@ -1,152 +1,121 @@
-# 垂直领域企业级RAG智能问答系统 V3.1.0
+# 垂直领域企业级 RAG 智能问答系统 × 具身智能离线演示（U盘便携版）
 
-RAG十套系统 · 本地 Ollama 大模型 · 完全离线可运行 · 脱敏开源骨架
+> 一套完全自包含的 U 盘交付系统：**10 套垂直领域 RAG 问答系统 + 本地 Ollama 大模型（qwen3:8b）+ 具身智能机械臂演示**。
+> 无需联网、无需 API Key、无需安装任何环境——插入任意 Windows 电脑双击即用。
+> 支持 **108 种文件格式** 知识库构建，**纯图片版 PDF / 扫描件 / 图片 / 录音 / 视频** 全部离线打通。
 
-本仓库为【垂直领域企业级RAG智能问答系统 V3.1.0】的**脱敏源码骨架**：包含十套系统入口脚本、RAG 核心逻辑（app/rag.py）、工程支撑模块、具身智能演示工程与 EmbodiedSim-Framework 仿真框架。模型权重、嵌入缓存、FAISS 向量索引、知识库文档、运行日志均**不入库**（见 `.gitignore`）。
+---
 
-## 完全离线运行实证（核心证据）
+## 一、运行截图
 
-下图为系统在**完全断网**环境下的实机运行截图：浏览器地址栏 `localhost:7861`，知识库文档、大模型、嵌入模型、向量索引全部位于本地便携存储，问答与检索全程零联网、零云端依赖。
+### 通用 RAG 智能问答系统（纯图版 PDF 实测）
 
-![完全离线运行实机截图](demo_screenshot.jpg)
+上传《打工人职场防坑完全手册_清晰版_**纯图版**.pdf》（无文字层扫描件），系统自动渲染 + Windows 内置中文 OCR 识别全文并正确问答：
 
-证据要点：
+![通用RAG问答-纯图PDF实测](docs/screenshots/04_qa_pureimg_pdf.jpg)
 
-- **网络状态**：完全断网，全程无任何外网连接
-- **大模型**：本地 Ollama qwen3:8b（便携版，无需API Key）
-- **嵌入模型**：shibing624/text2vec-base-chinese，本地离线缓存（`HF_HUB_OFFLINE=1` 强制离线）
-- **向量索引**：FAISS 预置索引，断网状态下加载并检索成功
-- **问答效果**：加载《住房公积金管理条例》知识库后离线完成结构化问答，回答附检索出处
+### PPO 训练智能体演示（500 万步训练成果，成功率 98%）
 
-## 系统列表与端口对应
+![PPO训练智能体演示](docs/screenshots/05_ppo_training_demo.jpg)
 
-十套系统共用核心模块 `app/rag.py`，仅知识库与提示词模板不同。
+---
 
-| 编号 | 系统名称 | 端口 | 入口文件 |
-| --- | --- | --- | --- |
-| [1] | 通用RAG智能问答系统 | 7861 | `app/run.py` |
-| [2] | 法律知识问答系统 | 7869 | `app/legal_qa.py` |
-| [3] | 教育知识问答系统 | 7870 | `app/education_qa.py` |
-| [4] | 医疗健康问答系统 | 7871 | `app/medical_qa.py` |
-| [5] | 金融知识问答系统 | 7872 | `app/finance_qa.py` |
-| [6] | IT技术问答系统 | 7873 | `app/tech_qa.py` |
-| [7] | 电商零售问答系统 | 7874 | `app/e_commerce_qa.py` |
-| [8] | 政务服务问答系统 | 7875 | `app/government_qa.py` |
-| [9] | 人力资源问答系统 | 7876 | `app/hr_qa.py` |
-| [10] | 科研学术问答系统 | 7877 | `app/academic_qa.py` |
+## 二、启动菜单截图
 
-## 快速开始
+### 一键启动菜单（10 套系统，端口 7861-7877）
 
-### 1. 环境要求
+![一键启动菜单](docs/screenshots/01_launch_menu.jpg)
 
-- Python 3.10 及以上
-- Ollama 本地服务与 `qwen3:8b` 模型
-- 嵌入模型 `shibing624/text2vec-base-chinese`（可提前离线缓存）
+### 一键启动全部 10 套系统（本地 Ollama 自动就绪）
 
-### 2. 安装依赖
+![启动全部10套系统](docs/screenshots/02_starting_10_systems.jpg)
 
-```bash
-pip install streamlit langchain langchain-community langchain-openai langchain-text-splitters langchain-huggingface sentence-transformers faiss-cpu python-dotenv pypdf docx2txt openpyxl
-```
+### 全部启动完成（浏览器按端口就绪顺序自动打开）
 
-参考版本组合（便携版实测）：sentence-transformers 6.0.1、langchain-huggingface 1.2.2、huggingface-hub 1.29.0、transformers 5.16.1。
+![全部启动完成访问地址](docs/screenshots/03_all_ports_ready.jpg)
 
-### 3. 准备模型
+---
 
-```bash
-# 大模型：本地 Ollama
-ollama pull qwen3:8b
-```
-
-嵌入模型在联网环境下载一次后，将整个 `hf_cache` 目录（含 `hub` 子目录）随项目迁移，断网场景按下文环境变量表指向该目录即可。
-
-### 4. 配置 .env（离线演示走 Ollama 分支，无需任何 Key）
-
-```ini
-LLM_BACKEND=ollama
-OLLAMA_BASE_URL=http://127.0.0.1:11434/v1
-OLLAMA_MODEL_NAME=qwen3:8b
-```
-
-如需云端模型分支（联网场景），配置 `DASHSCOPE_API_KEY` 或 `OPENAI_API_KEY`；仓库内所有 Key 均为脱敏占位。
-
-### 5. 启动
-
-```bash
-# 命令行启动，端口可替换为上表任一端口
-streamlit run app/run.py --server.port 7861
-```
-
-Windows 下也可双击 `一键启动RAG系统.bat`（数字菜单 1-10 对应十套系统）或 `Demo启动菜单.bat`（具身智能演示菜单）。
-
-### 6. 日常操作流程
-
-1. 点击【加载预置索引】。
-2. 点击【保存当前索引】。
-3. 点击【上传文档（选择文件）】里的【上传】，选择好文件后下方显示"已选择N个文件"。
-4. 点击【处理并添加】，下方显示"成功添加N个文档"。
-5. 在【智能问答】输入框进行提问。
-
-## 文档支持
-
-支持 PDF、Word、Excel、Markdown、TXT、HTML 六类文档解析；单文件上限50MB，单次最多上传10个文件；回答附检索出处。
-
-## 具身智能演示菜单（便携版）
-
-下图为双击 `Demo启动菜单.bat` 后弹出命令提示符显示的数字菜单（具身智能演示菜单 v1.1 便携版），输入对应阿拉伯数字即可运行对应演示。
-
-![具身智能演示菜单](launch_menu.jpg)
-
-- [1] 机械臂智能控制演示（含本地大模型）
-- [2] RAG 十套知识问答系统（浏览器）
-- [3] PyBullet 机械臂仿真
-- [4] PPO 训练智能体演示（500万步）
-- [5] 部署健康检查演示
-- [6] 三层编排+AI决策+数字孪生综合演示
-- [7] PyBullet Panda 仿真演示（框架版）
-- [8] 断网演示自检（演示前建议先运行）
-- [0] 退出
-
-## 目录结构（脱敏骨架）
+## 三、目录结构
 
 ```text
-├── 一键启动RAG系统.bat         # [主入口] 数字菜单，启动十套RAG问答系统
-├── 关闭所有系统.bat            # 一键关闭已启动的问答系统
-├── 合并模型到本机.bat          # 首次使用：合并 Ollama 本地大模型（qwen3:8b）
-├── 断网演示自检.bat            # 演示前断网自检
-├── Demo启动菜单.bat            # 具身智能演示数字菜单
-├── start_demo.bat             # 机械臂演示备用启动脚本
-├── start_robot.bat            # 机械臂演示启动脚本
-├── 启动PyBullet仿真.bat        # PyBullet 机械臂仿真
-├── 启动训练好的智能体.bat       # PPO 训练智能体演示
-├── rag.py                     # RAG 核心逻辑代码（根目录入口）
-├── app/                       # 十套问答系统核心目录
-│   ├── run.py … academic_qa.py # 十套系统入口（见端口表）
-│   ├── rag.py                 # RAG 核心模块（解析、分块、向量化、检索、生成）
-│   ├── batch_processor.py     # 文档批处理模块
-│   ├── chat_history.py        # 对话历史模块
-│   ├── document_visualizer.py # 文档可视化模块
-│   ├── export_utils.py        # 导出工具模块
-│   ├── logger.py              # 日志模块
-│   └── config/                # 配置目录（脱敏版，Key 经 .env 提供）
-├── embodied-intelligence/     # 具身智能演示工程（PPO 机械臂训练与推理、PyBullet 仿真、sim2real）
-├── _PUBLIC_NTA_OUTPUT/        # 内含 EmbodiedSim-Framework 仿真框架
-├── docs/                      # 架构与设计文档
-├── demo_screenshot.jpg        # 完全离线运行实机截图（核心证据，断网实测）
-├── launch_menu.jpg            # 具身智能演示数字菜单界面截图（便携版）
-└── README.md                  # 项目说明文档
+My-Demo-Project/
+├── 一键启动RAG系统.bat            # 主入口：菜单式启动10套RAG系统（端口7861-7877）
+├── Demo启动菜单.bat               # 具身智能演示总菜单（机械臂/仿真/PPO/自检等8项）
+├── 合并模型到本机.bat             # 首次使用前：合并分卷Ollama模型到U盘
+├── 断网演示自检.bat               # 演示前离线环境自检
+├── 关闭所有系统.bat               # 一键停止全部Streamlit服务
+├── start_demo.bat / start_robot.bat       # 机械臂智能控制演示
+├── 启动PyBullet仿真.bat / 启动训练好的智能体.bat   # 仿真与PPO智能体演示
+├── README.md
+├── app/                                   # 10套RAG问答系统主体
+│   ├── run.py                             # 通用RAG智能问答（端口7861）
+│   ├── rag.py                             # 全格式通用加载层（纯图OCR/录音转写/视频抽帧/优雅兜底）
+│   ├── legal_qa.py  education_qa.py  medical_qa.py  finance_qa.py
+│   ├── tech_qa.py  e_commerce_qa.py  government_qa.py  hr_qa.py  academic_qa.py
+│   ├── config/settings.py                 # 108种格式上传白名单与十套系统配置
+│   ├── ocr_bridge.ps1                     # Windows内置中文OCR桥接（完全离线）
+│   ├── audio_asr.ps1                      # Windows内置语音识别桥接（录音转写离线）
+│   ├── video_frames.ps1                   # 视频抽帧桥接（30/60帧、4K/8K全支持）
+│   ├── office_doc_extract.ps1             # 老式.doc Word COM提取+导出PDF桥接
+│   ├── office_xls_extract.ps1             # 老式.xls Excel COM提取+导出PDF桥接
+│   ├── *_faiss_index/                     # 10套预置768维FAISS向量索引
+│   └── legal_knowledge_base/              # 法律法规示例语料（14部PDF）
+├── embodied-intelligence/                 # 具身智能：机械臂控制/PPO训练/仿真/部署脚本
+├── _PUBLIC_NTA_OUTPUT/
+│   └── EmbodiedSim-Framework/             # 三层编排+AI决策+数字孪生综合演示框架
+├── docs/screenshots/                      # 实测截图（本README引用）
+├── python/                                # 便携Python 3.12.8（随U盘交付，不入仓库）
+├── ollama/                                # 本地Ollama服务+qwen3:8b模型（随U盘交付，不入仓库）
+└── hf_cache/                              # 嵌入模型离线缓存390MB（随U盘交付，不入仓库）
 ```
 
-## 架构文档
+---
 
-系统分层、问答数据流、索引构建流程与离线便携设计见 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)。
+## 四、快速开始（任意电脑 · 完全断网可用）
 
-## 脱敏与安全声明
+1. **拷贝**：将整个 U 盘目录复制到目标电脑（建议内存 ≥ 16GB）。
+2. **合并模型**（仅首次）：双击 `合并模型到本机.bat`，将分卷大模型合并到 U 盘。
+3. **启动**：双击 `一键启动RAG系统.bat`：
+   - 输入 `1`-`10` 启动单套系统；输入 `11` 一键启动全部 10 套并自动打开浏览器；
+   - 浏览器仅在对应端口真正就绪后打开（U 盘首次加载较慢，每端口最长等待 3 分钟）。
+4. **使用**：左侧「文档上传」支持一次选择多个文件（108 种格式），点击「处理并添加」后直接问答；也可加载预置知识库。
+5. **具身智能演示**：双击 `Demo启动菜单.bat`，可选机械臂控制、PyBullet 仿真、PPO 智能体、数字孪生等 8 项演示。
 
-- 所有硬编码 API Key 已替换为脱敏占位，真实 Key 通过环境变量或仓库根目录 `.env` 提供（`.env` 被 `.gitignore` 排除）。
-- 模型权重（`ollama/`、`*.safetensors`、`*.bin` 等）、嵌入缓存（`hf_cache/`）、向量索引（`*_faiss_index/`、`*.faiss`、`*.pkl`）、知识库文档、日志与导出文件均被 `.gitignore` 排除，不入库。
-- 仓库不含任何真实用户路径与商业客户数据。
+| 系统 | 端口 | 系统 | 端口 |
+|---|---|---|---|
+| 通用RAG智能问答 | 7861 | IT技术问答 | 7873 |
+| 法律知识问答 | 7869 | 电商零售问答 | 7874 |
+| 教育知识问答 | 7870 | 政务服务问答 | 7875 |
+| 医疗健康问答 | 7871 | 人力资源问答 | 7876 |
+| 金融知识问答 | 7872 | 科研学术问答 | 7877 |
 
-## 免责声明
+---
 
-本项目仅供技术研究与学习交流使用，不得用于任何非法用途；系统提供的信息仅供参考，不构成任何专业建议。
+## 五、全格式支持（108 种，断网离线全打通）
+
+| 类别 | 格式 | 处理通道 |
+|---|---|---|
+| 文档 | pdf docx doc xlsx xls pptx ppt rtf msg epub html htm xhtml | 文字层提取；**纯图版自动渲染/导出PDF + Windows内置OCR** |
+| 图片 | png jpg jpeg bmp tif tiff gif webp ico | Windows 内置中文 OCR（GIF/WebP/ICO 自动转 PNG） |
+| 音频 | mp3 m4a wav amr wma aac flac ogg silk aw | Windows 内置语音识别离线转写（含所有录音对话内容） |
+| 视频 | mp4 mov avi mkv flv wmv m4v webm 3gp | 内置抽帧（30/60 帧、4K/8K 全支持）+ 逐帧 OCR |
+| 压缩包 | zip | 成员递归加载 |
+| 文本/代码/配置 | txt md py csv tsv log json jsonl xml yaml yml ini cfg conf toml bat ps1 sh js css sql rst tex java c cpp h ts tsx go rb php ipynb svg vue proto 等 50+ 种 | 多编码解码（utf-8/gbk/big5），含无扩展名文件 |
+
+**可靠性设计**：任何损坏/无内容文件均返回优雅标记文档，批量处理永不因单文件中断；所有桥接脚本仅依赖 Windows 内置组件（OCR / 语音识别 / Office COM），零第三方服务、零联网。
+
+---
+
+## 六、技术栈
+
+- **大模型**：本地 Ollama `qwen3:8b`（OpenAI 兼容接口，U 盘内自包含）
+- **嵌入模型**：`shibing624/text2vec-base-chinese`（768 维，与 10 套预置 FAISS 索引维度一致，HF 离线缓存）
+- **应用层**：Python 3.12.8 便携版 + Streamlit + LangChain + FAISS
+- **离线能力**：Windows.Media.Ocr 中文 OCR、System.Speech 语音识别、Media 帧提取、Word/Excel COM 桥接
+
+---
+
+## 七、免责声明
+
+本仓库全部系统仅供技术研究与学习交流使用。法律 / 医疗 / 金融系统的回答仅供参考，不构成任何专业意见；重要决策请咨询执业专业人士。使用者须自行评估风险，因使用本仓库内容导致的任何损失由使用者承担。

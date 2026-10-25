@@ -417,7 +417,8 @@ def interactive():
                     if os.path.isfile(local_path):
                         success, msg = process_files([local_path])
                     elif os.path.isdir(local_path):
-                        file_paths = [os.path.join(root, f) for root, _, files in os.walk(local_path) for f in files if f.endswith(tuple(Config.SUPPORTED_FILE_TYPES))]
+                        file_paths = [os.path.join(root, f) for root, _, files in os.walk(local_path) for f in files
+                                      if os.path.splitext(f)[1].lower()[1:] in Config.SUPPORTED_FILE_TYPES or os.path.splitext(f)[1] == '']
                         success, msg = process_files(file_paths) if file_paths else (False, "文件夹中没有支持的文件")
                     else:
                         success, msg = False, "路径不存在"

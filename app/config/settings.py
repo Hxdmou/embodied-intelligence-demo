@@ -50,7 +50,28 @@ class Config:
     LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     
     # 系统配置
-    SUPPORTED_FILE_TYPES = ["txt", "pdf", "xlsx", "xls", "docx", "doc"]
+    # 全格式白名单：与rag.py全格式通用加载层一一对应，任何电脑断网离线全部打通
+    SUPPORTED_FILE_TYPES = [
+        # 文档类
+        "pdf", "docx", "doc", "xlsx", "xls", "pptx", "ppt", "rtf", "msg", "epub",
+        "html", "htm", "xhtml",
+        # 图片类（Windows内置OCR离线识别）
+        "png", "jpg", "jpeg", "bmp", "tif", "tiff", "gif", "webp", "ico",
+        # 音频类（Windows内置语音识别离线转写）
+        "mp3", "m4a", "wav", "amr", "wma", "aac", "flac", "ogg", "silk", "aw",
+        # 视频类（内置抽帧+OCR，30/60帧、4K/8K全支持）
+        "mp4", "mov", "avi", "mkv", "flv", "wmv", "m4v", "webm", "3gp",
+        # 压缩包
+        "zip",
+        # 文本/代码/配置类
+        "txt", "md", "py", "csv", "tsv", "log", "json", "jsonl", "xml", "yaml", "yml",
+        "ini", "cfg", "conf", "toml", "bat", "ps1", "sh", "js", "css", "sql", "rst",
+        "tex", "java", "c", "cpp", "h", "ts", "tsx", "go", "rb", "php",
+        "ipynb", "svg", "vue", "proto", "http", "iml", "pom", "env", "properties",
+        "kts", "fs", "pl", "mjs", "psm1", "psd1", "cmd", "zsh", "fish", "csh",
+        "nix", "scm", "g4", "manifest", "cnf", "def", "sample", "template", "example",
+        "strings", "editorconfig", "csproj", "sln", "cs", "kt",
+    ]
     MAX_UPLOAD_FILES = int(os.getenv("MAX_UPLOAD_FILES", 10))
     
     @staticmethod

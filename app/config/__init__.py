@@ -17,7 +17,7 @@ if os.path.exists(env_path):
 class Config:
     """系统配置类"""
     
-    # 脱敏版：真实Key请通过环境变量或项目根目录 .env 提供，严禁硬编码入库
+    # 脱敏版：真实Key请通过项目根目录 .env 提供，严禁硬编码
     AMAP_WEB_KEY = env_vars.get("AMAP_WEB_KEY", "")
     AMAP_JS_KEY = env_vars.get("AMAP_JS_KEY", "")
     AMAP_JS_SECURITY_CODE = env_vars.get("AMAP_JS_SECURITY_CODE", "")
@@ -26,7 +26,7 @@ class Config:
     
     MAP_ENABLE_3D_BUILDINGS = os.getenv("MAP_ENABLE_3D_BUILDINGS", "True").lower() == "true"
     
-    # 脱敏版：真实Key请通过环境变量或项目根目录 .env 提供，严禁硬编码入库
+    # 脱敏版：真实Key请通过项目根目录 .env 提供，严禁硬编码
     DASHSCOPE_API_KEY = env_vars.get("DASHSCOPE_API_KEY", "")
     DASHSCOPE_API_KEY_2 = env_vars.get("DASHSCOPE_API_KEY_2", "")
     DASHSCOPE_API_KEY_3 = env_vars.get("DASHSCOPE_API_KEY_3", "")

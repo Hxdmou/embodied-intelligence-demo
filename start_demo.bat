@@ -1,9 +1,9 @@
 @echo off
 setlocal enabledelayedexpansion
-title 机械臂智能控制演示（便携版）
+title ��е�����ܿ�����ʾ����Я�棩
 pushd "%~dp0"
 
-rem ===== 所有路径基于本bat所在目录，U盘换盘符也能跑 =====
+rem ===== ����·�����ڱ�bat����Ŀ¼��U�̻��̷�Ҳ���� =====
 set "ROOT=%~dp0"
 set "ROOT=%ROOT:~0,-1%"
 set "PYEXE=%ROOT%\python\python.exe"
@@ -12,17 +12,17 @@ set "PYTHONIOENCODING=utf-8"
 set "OLLAMA_MODELS=%ROOT%\ollama\models"
 
 echo ==============================================================
-echo           机械臂智能控制演示 v1.1（便携版）
+echo           ��е�����ܿ�����ʾ v1.1����Я�棩
 echo ==============================================================
 echo.
 
-echo [1/3] 检查 Ollama 服务（本地大模型）...
+echo [1/3] ��� Ollama ���񣨱��ش�ģ�ͣ�...
 "%SystemRoot%\System32\curl.exe" -f -s -o nul --connect-timeout 2 http://127.0.0.1:11434/api/tags >nul 2>&1
 if not errorlevel 1 goto ollama_ok
 
-echo       未检测到 Ollama，正在启动便携版...
+echo       δ��⵽ Ollama������������Я��...
 if not exist "!OLLAMA_MODELS!\blobs\sha256-a3de86cd1c132c822487ededd47a324c50491393e6565cd14bafa40d0b8e686f" (
-    echo       [提示] U盘内大模型尚未合并，请先运行【合并模型到本机.bat】。
+    echo       [��ʾ] U���ڴ�ģ����δ�ϲ����������С��ϲ�ģ�͵�����.bat����
     pause
     exit /b 1
 )
@@ -34,31 +34,31 @@ set /a _ow=0
 if not errorlevel 1 goto ollama_ok
 set /a _ow+=2
 if !_ow! GEQ 60 (
-    echo       [错误] Ollama服务60秒内未就绪，请检查电脑内存是否≥16GB。
+    echo       [����] Ollama����60����δ��������������ڴ��Ƿ��16GB��
     pause
     exit /b 1
 )
 goto wait_ollama
 
 :ollama_ok
-echo       Ollama 服务已就绪。
+echo       Ollama �����Ѿ�����
 "%SystemRoot%\System32\curl.exe" -f -s --connect-timeout 3 http://127.0.0.1:11434/api/tags | "%SystemRoot%\System32\findstr.exe" /i "qwen3" >nul 2>&1
 if errorlevel 1 (
-    echo       [警告] Ollama在运行，但未检测到 qwen3:8b 模型，演示中的大模型功能可能不可用。
-    echo       请确认已运行【合并模型到本机.bat】，且本机没有其他Ollama占用端口。
+    echo       [����] Ollama�����У���δ��⵽ qwen3:8b ģ�ͣ���ʾ�еĴ�ģ�͹��ܿ��ܲ����á�
+    echo       ��ȷ�������С��ϲ�ģ�͵�����.bat�����ұ���û������Ollamaռ�ö˿ڡ�
 )
 
-echo [2/3] 进入演示目录...
+echo [2/3] ������ʾĿ¼...
 cd /d "%ROOT%\embodied-intelligence"
 
-echo [3/3] 启动机械臂 GUI...
+echo [3/3] ������е�� GUI...
 echo.
-echo 鼠标: 左键=旋转 右键=平移 滚轮=缩放
-echo 按键: H=回零 R=复位 C=复位视角 ESC=退出
+echo ���: ���=��ת �Ҽ�=ƽ�� ����=����
+echo ����: H=���� R=��λ C=��λ�ӽ� ESC=�˳�
 echo.
 
 "%PYEXE%" demo_robot_gui.py
 
 echo.
-echo 演示已退出。
+echo ��ʾ���˳���
 pause
