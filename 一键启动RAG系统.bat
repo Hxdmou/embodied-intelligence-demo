@@ -1,4 +1,5 @@
 @echo off
+%SystemRoot%\System32\chcp.com 936 >nul
 setlocal enabledelayedexpansion
 
 title 垂直领域企业级RAG智能问答系统 V3.1.0

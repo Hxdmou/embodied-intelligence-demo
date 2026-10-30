@@ -1,5 +1,6 @@
 @echo off
 setlocal
+%SystemRoot%\System32\chcp.com 936 >nul
 title 具身智能演示菜单（便携版）
 pushd "%~dp0"
 
@@ -11,10 +12,11 @@ set "PYTHONNOUSERSITE=1"
 set "PYTHONIOENCODING=utf-8"
 
 :menu
+%SystemRoot%\System32\chcp.com 936 >nul
 cls
 echo.
 echo ==============================================================
-echo           具身智能演示菜单 v1.1（便携版）
+echo           具身智能演示菜单 v1.2（便携版）
 echo ==============================================================
 echo.
 echo   [1] 机械臂智能控制演示（含本地大模型）
@@ -25,6 +27,7 @@ echo   [5] 部署健康检查演示
 echo   [6] 三层编排+AI决策+数字孪生综合演示
 echo   [7] PyBullet Panda 仿真演示（框架版）
 echo   [8] 断网演示自检（演示前建议先运行）
+echo   [9] 真机部署（真机对接/仿真排练）
 echo   [0] 退出
 echo.
 echo ==============================================================
@@ -39,6 +42,7 @@ if "%choice%"=="5" goto health
 if "%choice%"=="6" goto gui
 if "%choice%"=="7" goto sim
 if "%choice%"=="8" goto selfcheck
+if "%choice%"=="9" goto realdeploy
 if "%choice%"=="0" goto end
 goto menu
 
@@ -78,6 +82,10 @@ goto menu
 
 :selfcheck
 call "%ROOT%\断网演示自检.bat"
+goto menu
+
+:realdeploy
+call "%ROOT%\真机部署.bat"
 goto menu
 
 :end

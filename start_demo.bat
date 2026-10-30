@@ -1,5 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
+%SystemRoot%\System32\chcp.com 936 >nul
 title »úÐµ±ÛÖÇÄÜ¿ØÖÆÑÝÊ¾£¨±ãÐ¯°æ£©
 pushd "%~dp0"
 
@@ -26,7 +27,7 @@ if not exist "!OLLAMA_MODELS!\blobs\sha256-a3de86cd1c132c822487ededd47a324c50491
     pause
     exit /b 1
 )
-start "" /B "%ROOT%\ollama\ollama.exe" serve
+start "ollama-serve" /MIN "%ROOT%\ollama\ollama.exe" serve
 set /a _ow=0
 :wait_ollama
 "%SystemRoot%\System32\ping.exe" -n 2 127.0.0.1 >nul

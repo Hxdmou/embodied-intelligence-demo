@@ -109,13 +109,23 @@ class DisturbanceSimulator:
             
             impulse = direction * magnitude
             
-            p.applyExternalImpulse(
-                objectUniqueId=robot_id,
-                linkIndex=ee_index,
-                impulseObj=impulse,
-                posObj=[0, 0, 0],
-                flags=p.WORLD_FRAME
-            )
+            if hasattr(p, "applyExternalImpulse"):
+                p.applyExternalImpulse(
+                    objectUniqueId=robot_id,
+                    linkIndex=ee_index,
+                    impulseObj=impulse,
+                    posObj=[0, 0, 0],
+                    flags=p.WORLD_FRAME
+                )
+            else:
+                # 旧版pybullet无冲量接口：以单步(1/240s)等效力实现相同冲量
+                p.applyExternalForce(
+                    objectUniqueId=robot_id,
+                    linkIndex=ee_index,
+                    forceObj=[float(v) * 240.0 for v in impulse],
+                    posObj=[0, 0, 0],
+                    flags=p.WORLD_FRAME
+                )
             
             self.stats["impulses_applied"] += 1
             self.stats["total_disturbances"] += 1

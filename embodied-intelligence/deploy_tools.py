@@ -390,7 +390,9 @@ class DeploymentReportGenerator:
         # 结论（100%严格标准：只有success_rate==1.0才算合格，否则不合格）
         lines.append("=" * 70)
         success_rate = deploy_data.get('success_rate', 0)
-        if success_rate == 1.0:
+        # 兼容两种单位: 比率(0~1) 与 百分比(0~100)
+        rate = success_rate / 100.0 if success_rate > 1.0 else success_rate
+        if rate >= 1.0 - 1e-9:
             lines.append("  🎯 部署结论: ✅ 合格 (100%严格标准达标 · success_rate=1.0)")
         else:
             lines.append(f"  ❌ 部署结论: 不合格 (success_rate={success_rate:.3f}，未达到100%严格标准)")

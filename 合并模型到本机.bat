@@ -1,4 +1,5 @@
 @echo off
+%SystemRoot%\System32\chcp.com 936 >nul
 setlocal enabledelayedexpansion
 title 合并大模型到U盘（首次使用必跑一次）
 pushd "%~dp0"

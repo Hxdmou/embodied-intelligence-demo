@@ -393,6 +393,16 @@ class MassRandomizer:
         return changes
 
 
+    def enable(self):
+        self.enabled = True
+
+    def disable(self):
+        self.enabled = False
+
+    def is_enabled(self):
+        return self.enabled
+
+
 class FrictionRandomizer:
     """摩擦随机化器 - 独立控制不同接触面的摩擦系数"""
     
@@ -429,6 +439,16 @@ class FrictionRandomizer:
         return changes
 
 
+    def enable(self):
+        self.enabled = True
+
+    def disable(self):
+        self.enabled = False
+
+    def is_enabled(self):
+        return self.enabled
+
+
 class PhysicsDistortion:
     """物理失真模拟 - 模拟真实世界的物理参数偏差"""
     
@@ -463,6 +483,16 @@ class PhysicsDistortion:
                 }
         
         return changes
+
+
+    def enable(self):
+        self.enabled = True
+
+    def disable(self):
+        self.enabled = False
+
+    def is_enabled(self):
+        return self.enabled
 
 
 class DomainRandomizationSystem:

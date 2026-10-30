@@ -18,6 +18,34 @@
 
 ![PPO训练智能体演示](docs/screenshots/05_ppo_training_demo.jpg)
 
+### 真机部署 · 断网全流程实证（菜单 [9]，9 张连拍）
+
+新增【真机部署】入口，对齐工程化交付规范：
+
+1. 点击运行后**先环境自检**（依赖/机器人配置/部署主流程/策略模型/安全参数 5 层防护）；
+2. 提示符由甲方**自行输入真机 IP 或串口参数**（支持 TCP/UDP/CAN/EtherCAT/ROS/Modbus 六协议适配）；
+3. 输入错误/缺省/不可达 → **优雅退出**，仅提示"真机环境未就绪，请检查硬件连接"，不抛任何 traceback；
+4. 真机底层驱动包**不暴露于 U 盘根目录**，仅保留 `真机部署.bat` 单一调用接口；
+5. 无真机时可输入 `SIM` 走**仿真部署排练**：标定 → 部署循环（周期/振动/冲击扰动注入）→ 部署健康检查 → 部署报告与归档，全程断网。
+
+![菜单[9]真机部署+环境自检全绿+连接参数提示](docs/screenshots/06_deploy_menu_selfcheck_prompt.jpg)
+
+![仿真排练启动+子系统加载+完整参数校准开始](docs/screenshots/07_deploy_sim_start_calibration.jpg)
+
+![参数校准明细（质量/阻尼 原始vs校准）](docs/screenshots/08_deploy_calibration_details.jpg)
+
+![摩擦/延迟校准+域随机化+部署循环1-4（误差0.10~0.22mm）](docs/screenshots/09_deploy_loop_cycles_1_4.jpg)
+
+![部署循环4-10+部署健康检查5/5通过（成功率100% 10/10）](docs/screenshots/10_deploy_healthcheck_10of10.jpg)
+
+![部署循环11-18+扰动注入（periodic/vibration）](docs/screenshots/11_deploy_cycles_disturbance.jpg)
+
+![部署循环18-26+健康检查100%（20/20）](docs/screenshots/12_deploy_healthcheck_20of20.jpg)
+
+![部署循环结束：29循环 成功率100.0%](docs/screenshots/13_deploy_loop_end_100pct.jpg)
+
+![最终健康检查5/5+部署报告生成+部署总结报告](docs/screenshots/14_deploy_final_report.jpg)
+
 ---
 
 ## 二、启动菜单截图
@@ -41,7 +69,8 @@
 ```text
 My-Demo-Project/
 ├── 一键启动RAG系统.bat            # 主入口：菜单式启动10套RAG系统（端口7861-7877）
-├── Demo启动菜单.bat               # 具身智能演示总菜单（机械臂/仿真/PPO/自检等8项）
+├── Demo启动菜单.bat               # 具身智能演示总菜单（机械臂/仿真/PPO/自检/真机部署等9项）
+├── 真机部署.bat                   # 真机部署单一调用接口（自检→参数→部署/优雅退出）
 ├── 合并模型到本机.bat             # 首次使用前：合并分卷Ollama模型到U盘
 ├── 断网演示自检.bat               # 演示前离线环境自检
 ├── 关闭所有系统.bat               # 一键停止全部Streamlit服务
@@ -62,6 +91,7 @@ My-Demo-Project/
 │   ├── *_faiss_index/                     # 10套预置768维FAISS向量索引
 │   └── legal_knowledge_base/              # 法律法规示例语料（14部PDF）
 ├── embodied-intelligence/                 # 具身智能：机械臂控制/PPO训练/仿真/部署脚本
+│   └── real_deploy_entry.py               # 真机部署调用接口实现（驱动包内置不暴露）
 ├── _PUBLIC_NTA_OUTPUT/
 │   └── EmbodiedSim-Framework/             # 三层编排+AI决策+数字孪生综合演示框架
 ├── docs/screenshots/                      # 实测截图（本README引用）
@@ -80,7 +110,7 @@ My-Demo-Project/
    - 输入 `1`-`10` 启动单套系统；输入 `11` 一键启动全部 10 套并自动打开浏览器；
    - 浏览器仅在对应端口真正就绪后打开（U 盘首次加载较慢，每端口最长等待 3 分钟）。
 4. **使用**：左侧「文档上传」支持一次选择多个文件（108 种格式），点击「处理并添加」后直接问答；也可加载预置知识库。
-5. **具身智能演示**：双击 `Demo启动菜单.bat`，可选机械臂控制、PyBullet 仿真、PPO 智能体、数字孪生等 8 项演示。
+5. **具身智能演示**：双击 `Demo启动菜单.bat`，可选机械臂控制、PyBullet 仿真、PPO 智能体、数字孪生、真机部署等 9 项演示。
 
 | 系统 | 端口 | 系统 | 端口 |
 |---|---|---|---|

@@ -1,4 +1,5 @@
 @echo off
+%SystemRoot%\System32\chcp.com 936 >nul
 setlocal
 title PyBullet »úĞµ±Û·ÂÕæ£¨±ãĞ¯°æ£©
 pushd "%~dp0"

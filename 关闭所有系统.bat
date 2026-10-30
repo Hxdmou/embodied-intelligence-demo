@@ -1,4 +1,5 @@
 @echo off
+%SystemRoot%\System32\chcp.com 936 >nul
 title 关闭所有系统（便携版）
 cls
 

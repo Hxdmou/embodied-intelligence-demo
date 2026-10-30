@@ -1,4 +1,5 @@
 @echo off
+%SystemRoot%\System32\chcp.com 936 >nul
 setlocal enabledelayedexpansion
 title ¶ÏÍøÑİÊ¾×Ô¼ì£¨±ãĞ¯°æ£©v1.0
 pushd "%~dp0"

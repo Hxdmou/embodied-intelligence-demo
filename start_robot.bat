@@ -1,4 +1,5 @@
 @echo off
+%SystemRoot%\System32\chcp.com 936 >nul
 setlocal
 title 机器人仿真 + 控制 GUI（便携版）
 pushd "%~dp0"

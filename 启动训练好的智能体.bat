@@ -1,4 +1,5 @@
 @echo off
+%SystemRoot%\System32\chcp.com 936 >nul
 setlocal
 title PPO ÑµÁ·ÖÇÄÜÌåÑİÊ¾£¨±ãĞ¯°æ£©
 pushd "%~dp0"
